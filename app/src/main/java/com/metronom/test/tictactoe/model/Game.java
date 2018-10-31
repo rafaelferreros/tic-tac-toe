@@ -91,8 +91,8 @@ public class Game {
     private void addPlayers(){
         //TODO configure players
         playerList.add(new HumanPlayer(configuration.player1Char, "Player1"));
-        //playerList.add(new HumanPlayer(configuration.player2Char, "Player2"));
-        //playerList.add(new ComputerPlayer(configuration.player3Char, "Computer"));
+        playerList.add(new HumanPlayer(configuration.player2Char, "Player2"));
+        playerList.add(new ComputerPlayer(configuration.player3Char, "Computer"));
 
     }
 
@@ -116,7 +116,7 @@ public class Game {
         if(validMove(move)){
             board.setMove(move);
 
-            if(isWinner(move)){
+            if(isWinner()){
                 this.winner = this.currentPlayer;
                 this.finished = true;
             }
@@ -134,9 +134,9 @@ public class Game {
         }
     }
 
-    private boolean isWinner(Move move){
+    private boolean isWinner(){
         WinEvaluator evaluator = new WinEvaluator(this.board);
-        return evaluator.evaluateWin(move);
+        return evaluator.evaluateWin();
     }
 
     private boolean validMove(Move move){

@@ -5,6 +5,7 @@ public class Board {
     private int size;
     private char[][] playBoard;
     private int availableBoxes;
+    private Move lastMove;
 
     public Board(int size){
         this.size = size;
@@ -25,10 +26,15 @@ public class Board {
             availableBoxes--;
         }
         playBoard[move.col][move.row] = move.player.getValue();
+        lastMove = move;
     }
 
     public int getAvailableBoxes(){
         return availableBoxes;
+    }
+
+    public Move getLastMove(){
+        return lastMove;
     }
 
 

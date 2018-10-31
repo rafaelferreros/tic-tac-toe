@@ -11,16 +11,20 @@ public class WinEvaluator {
         this.board = board;
     }
 
-    public boolean evaluateWin(Move move){
+    public boolean evaluateWin(){
+        Move lastMove = board.getLastMove();
+        if(lastMove == null){
+            return false;
+        }
 
-        return winColumn(move) ||
-               winRow(move) ||
-               winDiagonal1(move) ||
-               winDiagonal2(move);
+        return winColumn(lastMove) ||
+               winRow(lastMove) ||
+               winDiagonal1(lastMove) ||
+               winDiagonal2(lastMove);
 
     }
 
-    private boolean winColumn(Move move){
+    protected boolean winColumn(Move move){
         int col = move.col;
 
         for(int row = 0; row < this.board.getSize(); row++){
@@ -31,7 +35,7 @@ public class WinEvaluator {
         return true;
     }
 
-    private boolean winRow(Move move){
+    protected boolean winRow(Move move){
         int row = move.row;
 
         for(int col = 0; col < this.board.getSize(); col++){
@@ -42,7 +46,7 @@ public class WinEvaluator {
         return true;
     }
 
-    private boolean winDiagonal1( Move move){
+    protected boolean winDiagonal1( Move move){
         if(move.col != move.row) {
             return false;
         }
@@ -56,7 +60,7 @@ public class WinEvaluator {
         return true;
     }
 
-    private boolean winDiagonal2(Move move){
+    protected boolean winDiagonal2(Move move){
         int size = this.board.getSize();
 
         for(int i =0; i < size; i++){
