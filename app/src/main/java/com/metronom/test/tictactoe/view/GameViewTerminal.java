@@ -85,7 +85,7 @@ public class GameViewTerminal implements GameView {
             row = scanner.nextInt();
 
         }catch (InputMismatchException e){
-            showError("Not a number, try again");
+            showError("Not a valid number, try again");
             System.out.flush();
             playTurn(player);
         }
@@ -102,7 +102,7 @@ public class GameViewTerminal implements GameView {
     public void autoPlay(Player player){
         showPlayer(player);
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Press any key to continue: ");
+        System.out.print("Press ENTER to continue: ");
         scanner.nextLine();
 
     }
